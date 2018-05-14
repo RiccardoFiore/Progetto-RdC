@@ -1,0 +1,48 @@
+<!-- views/profile.ejs -->
+<!doctype html>
+<html>
+<head>
+    <title>Node Authentication</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <style>
+        body        { padding-top:80px; word-wrap:break-word; }
+        a           {  cfont-size: 18px;}
+        .row        { margin-left: 30%; text-align: left;}
+
+
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="page-header text-center">
+        <h1><span class="fa fa-anchor"></span> Profile Page</h1>
+        <a href="/" class="btn btn-default btn-sm">Home</a>
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </div>
+
+    <div class="row">
+
+        <!-- LOCAL INFORMATION -->
+        <% if(user.local.username !== undefined){%>
+        <div class="col-sm-6">
+            <div class="well">
+                <h3 align="center"><span class="fa fa-user"></span> Local</h3>
+
+                <p>
+                    <strong>username</strong>: <%= user.local.username %><br>
+                    <strong>password</strong>: <%= user.local.passwordIns %>
+                </p>
+
+            </div>
+        </div>
+        <%}%>
+
+
+
+    </div>
+
+</div>
+</body>
+</html>
