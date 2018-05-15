@@ -10,8 +10,15 @@ var userSchema = mongoose.Schema({
         username     : String,
         passwordIns  : String,
         password     : String
-    }
+    },
 
+    facebook         : {
+        id           : String,
+        token        : String,
+        first_name   : String,
+        last_name    : String,
+        email        : String
+    }
 });
 
 // methods ======================
@@ -26,4 +33,3 @@ userSchema.methods.validPassword = function(password) {
 
 // create the model for users and expose it to our app
 module.exports = mongoose.model('User', userSchema);
-

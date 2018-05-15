@@ -37,12 +37,25 @@
 
             </div>
         </div>
+        <%} else if (user.facebook.id !== undefined){%>
+        <!-- FACEBOOK INFORMATION -->
+        <div class="col-sm-6">
+            <div class="well">
+                <h3 align="center" class="text-primary"><span class="fa fa-facebook"></span> Facebook</h3>
+
+                <p>
+                    <strong>nome</strong>: <%= user.facebook.first_name %><br>
+                    <strong>conome</strong>: <%= user.facebook.last_name %><br>
+                    <strong>email</strong>: <%= user.facebook.email %><br>
+                </p>
+
+            </div>
+        </div>
         <%}%>
-
-
 
     </div>
 
 </div>
 </body>
+</html>
 </html>
