@@ -1,0 +1,81 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#map {
+    height: 100%;
+    width: 100%;
+}
+
+table {
+    font-size: 12px;
+}
+
+#menubar{
+    float: left;
+    height: 9%;
+    width: 100%;
+    background-color: #2a4b8d;
+    z-index: 5;
+    position: absolute;
+}
+
+#listing {
+    margin-top: 0.3% ;
+    position: absolute;
+    height: 470px;
+    overflow: auto;
+    left: 56%;
+    cursor: pointer;
+    overflow-x: hidden;
+    z-index: 5;
+}
+
+#controls {
+    margin-top: 0.7%;
+    height: 4%;
+    position: absolute;
+    left: 17%;
+    width: 15%;
+    top: 0px;
+    background-color: #2a4b8d;
+    z-index: 5;
+}
+#autocomplete {
+    width: 100%;
+}
+#country {
+    margin-top: 15%;
+    width: 100%;
+}
+.placeIcon {
+    width: 20px;
+    height: 34px;
+    margin: 4px;
+}
+.parkingIcon {
+    width: 24px;
+    height: 24px;
+}
+#results {
+    border-collapse: collapse;
+    width: 240px;
+}
+#rating {
+    font-size: 13px;
+    font-family: Arial Unicode MS;
+}
+.iw_table_row {
+    height: 18px;
+}
+.iw_attribute_name {
+    font-weight: bold;
+    text-align: right;
+}
+.iw_table_icon {
+    text-align: right;
+}
+
+

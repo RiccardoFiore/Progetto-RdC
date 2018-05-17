@@ -1,4 +1,5 @@
-module.exports = function(app, passport) {
+
+module.exports = function(app, passport, path , express) {
 
 
     // HOME PAGE ===========================
@@ -52,7 +53,25 @@ module.exports = function(app, passport) {
             failureRedirect : '/'
         }));
 
+    // GOOGLE AUTHENTICATION =======================
+    app.get('/auth/google', passport.authenticate('google', {
+        scope : ['profile', 'email']
+    }));
 
+    // handle the callback after facebook has authenticated the user
+    app.get('/auth/google/callback',
+        passport.authenticate('google', {
+            successRedirect : '/profile',           //where to redirect after successful google authentication
+            failureRedirect : '/'
+        }));
+
+
+    // MAPS API ====================================
+    app.get("/parking", isLoggedIn, function(req,res){
+        console.log(path.join(__dirname, 'maps-support'));
+        app.use(express.static(path.join(__dirname,'maps-support')));
+        res.render("maps-parking.ejs");
+    });
 
     // LOGOUT ==============================
     app.get('/logout', function(req, res) {

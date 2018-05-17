@@ -6,6 +6,9 @@ var passport = require('passport');
 var flash    = require('connect-flash');
 
 
+var path     = require('path'); //manage path directories
+
+
 //node module amqp (we use topics based queue)
 var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -34,13 +37,8 @@ app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
 // routes ======================================================================
-require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
+require('./app/routes.js')(app, passport, path, express); // load our routes and pass in our app and fully configured passport
 
 // launch ======================================================================
 app.listen(port);
 console.log('The magic happens on port ' + port);
-
-
-
-
-
