@@ -38,6 +38,8 @@
 
             </div>
         </div>
+
+
         <%} else if (user.facebook.id !== undefined){%>
         <!-- FACEBOOK INFORMATION -->
         <div class="col-sm-6">
@@ -52,11 +54,24 @@
 
             </div>
         </div>
-        <%}%>
 
+        <%} else if (user.google.name !== undefined) {%>
+        <div class="col-sm-6">
+            <div class="well">
+                <h3 align="center" class="text-danger"><span class="fa fa-google-plus"></span> Google</h3>
+
+                <p>
+                    <strong>Name</strong>: <%= user.google.name %><br>
+                    <strong>Surname</strong>: <%= user.google.surname %><br>
+                    <strong>Email</strong>: <%= user.google.email %>
+                </p>
+
+            </div>
+        </div>
+
+        <%}%>
     </div>
 
 </div>
 </body>
-</html>
 </html>

@@ -70,7 +70,9 @@ module.exports = function(app, passport, path , express) {
     app.get("/parking", isLoggedIn, function(req,res){
         console.log(path.join(__dirname, 'maps-support'));
         app.use(express.static(path.join(__dirname,'maps-support')));
-        res.render("maps-parking.ejs");
+        res.render("maps-parking.ejs",{
+            user : req.user //get the user out of session and pass to template
+        });
     });
 
     // LOGOUT ==============================

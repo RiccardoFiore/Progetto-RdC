@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Parking Search</title>
+    <title>Place Autocomplete Parking Search</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="style_parking.css">
@@ -9,9 +9,10 @@
     </link>
 </head>
 <body>
+<div id = "container-left">
 
     <div id = "menubar">
-        <div id="findparking">
+        <div id="findhotels">
             Cerca un parcheggio a:
         </div>
 
@@ -39,6 +40,9 @@
         </div>
 
 
+
+
+
         <div id="listing">
             <table>
                 <tr>
@@ -49,14 +53,29 @@
 
         </div>
 
-
-
-
     </div>
 
     <div id="map"></div>
+</div>
 
 
+
+<div id="right-panel"></div>
+<div id = "container-right">
+    <div id="welcome" align="center">
+        <h1>WS_Parking Chat</h1>
+        <input type="button" id ="join" value="Join Chat" onclick="connectToChat();">
+    </div>
+    <div id="chat">
+        <div id="messageForm">
+            <h3>Inserisci il tuo messaggio:</h3>
+            <input type="text" id="message">
+            <input type="button" value="Invia" onclick="sendMessage();">
+        </div>
+
+        <div id="chatBox"></div>
+    </div>
+</div>
 <div style="display: none">
     <div id="info-content">
         <table>
@@ -83,6 +102,10 @@
         </table>
     </div>
 </div>
+<script>
+    var user = "<% if(user.local){ %><%= user.local.username%> <%} if(user.facebook){%> <%= user.facebook.last_name %><%}
+    if(user.google){%> <%= user.google.name %> <%}%>";</script>
+<script src = "websocket_chat.js"></script>
 <script src = "maps.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqz0pR-kzZcVK17lZgr1c-0y2IvecGCc4&libraries=places&callback=initMap" async defer></script>
 </body>
