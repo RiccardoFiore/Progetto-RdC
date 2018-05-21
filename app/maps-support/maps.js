@@ -4,6 +4,9 @@ var autocomplete;
 var countryRestrict = {'country': 'it'};
 var MARKER_PATH = 'https://developers.google.com/maps/documentation/javascript/images/marker_green';
 var hostnameRegexp = new RegExp('^https?://.+?/');
+var pos;
+var start,end;
+var src = "",dest = "";
 
 
 function handleLocationError(browserHasGeolocation, infoWindowPos, pos) {
@@ -98,6 +101,18 @@ function initMap() {
 
     // Add a DOM event listener to react when the user selects a country.
     document.getElementById('country').addEventListener('change', setAutocompleteCountry);
+
+    var directionsDisplay = new google.maps.DirectionsRenderer;
+    var directionsService = new google.maps.DirectionsService;
+
+    var geocoder = new google.maps.Geocoder;
+
+    directionsDisplay.setMap(map);
+    var onClickHandler = function() {
+        calculateAndDisplayRoute(directionsService, directionsDisplay, geocoder, map);
+    };
+
+    document.getElementById('FindPath').addEventListener('click', onClickHandler);
 
 }
 
@@ -260,6 +275,76 @@ function buildIWContent(place) {
         document.getElementById('iw-website').textContent = website;
     } else {
         document.getElementById('iw-website-row').style.display = 'none';
+    }
+}
+
+function calculateAndDisplayRoute(directionsService, directionsDisplay, geocoder, map) {
+
+    if (navigator.geolocation) {
+
+        navigator.geolocation.getCurrentPosition(function(position) {
+            pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+            var myPosMark = new google.maps.Marker({
+                position: pos,
+                map: map,
+                title: "MyPosition"
+            });
+
+            var cityCircle = new google.maps.Circle({
+                strokeColor: '#0c67ff',
+                fillColor: '#5ba4ff',
+                fillOpacity: 0.35,
+                map: map,
+                center: pos,
+                radius: 300
+            });
+
+            start = pos;
+            end = markers[document.getElementById("results").selectedIndex].getPosition();
+            var latlng = {lat: pos.lat, lng: pos.lng};
+            geocoder.geocode({'location': latlng}, function(results, status) {
+                if (status === 'OK') {
+                    if (results[0]) {
+                        src = results[0].formatted_address;
+                    } else {
+                        window.alert('No results found');
+                    }
+                } else {
+                    window.alert('Geocoder failed due to: ' + status);
+                }
+            });
+            geocoder.geocode({'location': end}, function(results, status) {
+                if (status === 'OK') {
+                    if (results[0]) {
+                        dest = results[0].formatted_address;
+                    } else {
+                        window.alert('No results found');
+                    }
+                } else {
+                    window.alert('Geocoder failed due to: ' + status);
+                }
+            });
+            directionsService.route({
+                origin: start,
+                destination: end,
+                travelMode: 'DRIVING'
+            }, function(response, status) {
+                if (status === 'OK') {
+                    directionsDisplay.setDirections(response);
+                } else {
+                    window.alert('Directions request failed due to ' + status);
+                }
+            });
+        }, function() {
+            handleLocationError(true, map.getCenter());
+        });
+
+    } else {
+        // Browser doesn't support Geolocation
+        handleLocationError(false, map.getCenter());
     }
 }
 

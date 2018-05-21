@@ -1,6 +1,18 @@
 /* Always set the map height explicitly to define the size of the div
          * element that contains the map. */
 
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#map {
+    margin-top: 4.2%;
+    height: 100%;
+    width: 100%;
+}
+
 #container-left{
     float:  left;
     height: 100%;
@@ -20,17 +32,9 @@
     overflow: auto;
 }
 
-#map {
-    margin-top: 4.2%;
-    height: 100%;
-    width: 100%;
-}
+
 /* Optional: Makes the sample page fill the window. */
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
+
 table {
     font-size: 12px;
 }
@@ -65,7 +69,7 @@ table {
     z-index: 5;
 }
 
-#findhotels {
+#findparking {
     margin-top: 0.7%;
     left: -2%;
     color: #ffffffff;
