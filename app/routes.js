@@ -67,10 +67,10 @@ module.exports = function(app, passport, path , express) {
 
 
     // MAPS API ====================================
-    app.get("/parking", isLoggedIn, function(req,res){
+    app.get("/cinema", isLoggedIn, function(req,res){
         console.log(path.join(__dirname, 'maps-support'));
         app.use(express.static(path.join(__dirname,'maps-support')));
-        res.render("maps-parking.ejs",{
+        res.render("maps-cinema.ejs",{
             user : req.user //get the user out of session and pass to template
         });
     });

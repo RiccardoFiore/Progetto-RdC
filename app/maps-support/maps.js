@@ -133,7 +133,7 @@ function onPlaceChanged() {
 function search() {
     var search = {
         bounds: map.getBounds(),
-        types: ['parking']
+        types: ['movie_theater']
     };
 
     places.nearbySearch(search, function(results, status) {

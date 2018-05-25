@@ -1,0 +1,198 @@
+/* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#map {
+    margin-top: 4.2%;
+    height: 100%;
+    width: 100%;
+}
+
+#container-left{
+    float:  left;
+    height: 100%;
+    width: 100%;
+}
+
+
+#comment_textArea{
+    display: none;
+}
+#container-right{
+    margin-top: 4%;
+    float:  right;
+    width: 60%;
+    height: 100%;
+    background-color: rgba(227, 223, 226, 0.84);
+    overflow: auto;
+}
+
+
+/* Optional: Makes the sample page fill the window. */
+
+table {
+    font-size: 12px;
+}
+
+#menubar{
+    float: left;
+    height: 9%;
+    width: 100%;
+    background-color: #2a4b8d;
+    z-index: 5;
+    position: absolute;
+}
+
+#listing {
+    margin-top: 0.3% ;
+    position: absolute;
+    height: 470px;
+    overflow: auto;
+    left: 56%;
+    cursor: pointer;
+    overflow-x: hidden;
+    z-index: 5;
+}
+
+#FindPath {
+    margin-top: 0.7%;
+    position: inherit;
+    text-align: center;
+    left: 81%;
+    width: 16%;
+    font-size: 16px;
+    z-index: 5;
+}
+
+#findparking {
+    margin-top: 0.7%;
+    left: -2%;
+    color: #ffffffff;
+    height: 4%;
+    position: absolute;
+    text-align: center;
+    width: 20%;
+    font-size: 18px;
+    z-index: 5;
+    background-color: #2a4b8d;
+}
+#locationField {
+    margin-top: 0.8%;
+    height: 4%;
+    position: absolute;
+    width: 22%;
+    left: 33%;
+    top: 0px;
+    z-index: 5;
+    background-color: #2a4b8d;
+}
+#controls {
+    margin-top: 0.7%;
+    height: 4%;
+    position: absolute;
+    left: 17%;
+    width: 15%;
+    top: 0px;
+    background-color: #2a4b8d;
+    z-index: 5;
+}
+#autocomplete {
+    width: 100%;
+}
+#country {
+    width: 100%;
+}
+.placeIcon {
+    width: 20px;
+    height: 34px;
+    margin: 4px;
+}
+.hotelIcon {
+    width: 24px;
+    height: 24px;
+}
+#results {
+    border-collapse: collapse;
+    width: 240px;
+}
+#rating {
+    font-size: 13px;
+    font-family: Arial Unicode MS;
+}
+.iw_table_row {
+    height: 18px;
+}
+.iw_attribute_name {
+    font-weight: bold;
+    text-align: right;
+}
+.iw_table_icon {
+    text-align: right;
+}
+
+#welcome{
+    float: left;
+    width: 55%;
+}
+#chat{
+    float: left;
+    width: 45%;
+    margin-left: 15%;
+
+}
+
+#form{
+    margin-top: 5%;
+    margin-left: 10%;
+    float: right;
+    width: 30%;
+}
+
+#join{
+    width: 100px;
+    height: 25px;
+    margin-left: 3%;
+    font-size: 16px;
+}
+
+#right-panel {
+    margin-top: 51.47% ;
+    font-family: 'Roboto','sans-serif';
+    line-height: 30px;
+    padding-left: 10px;
+    z-index: 10;
+    position: absolute;
+    background-color: white;
+}
+
+#right-panel select, #right-panel input {
+    font-size: 15px;
+}
+
+
+
+#right-panel i {
+    font-size: 12px;
+}
+#right-panel {
+    float: left;
+    cursor: auto;
+    width: 40%;
+    height: 635px;
+    overflow: auto;
+}
+
+c{
+    color: #2e5095;
+}
+
+b.msg_user{
+    color: rgb(159, 42, 36);
+}
+
+

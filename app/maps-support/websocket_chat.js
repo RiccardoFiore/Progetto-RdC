@@ -40,3 +40,13 @@ window.onload = function () {
 };
 
 
+function sendPath() {
+    if (src !== "" && dest !== "") {
+        var message = {};
+        message.user = user;
+        message.text = "<b>Let's go from:</b><br><c> " + src + "</c><br><b>to: </b><br><c>" + dest + "</c>.";
+        if (message.text !== "") socket.send(JSON.stringify(message));
+        else return false;
+    }
+};
+
