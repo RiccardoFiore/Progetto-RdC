@@ -53,7 +53,7 @@ table {
     position: absolute;
     height: 470px;
     overflow: auto;
-    left: 56%;
+    left: 45%;
     cursor: pointer;
     overflow-x: hidden;
     z-index: 5;
@@ -63,13 +63,13 @@ table {
     margin-top: 0.7%;
     position: inherit;
     text-align: center;
-    left: 81%;
+    left: 70%;
     width: 16%;
     font-size: 16px;
     z-index: 5;
 }
 
-#findparking {
+#findcinema {
     margin-top: 0.7%;
     left: -2%;
     color: #ffffffff;
@@ -86,25 +86,13 @@ table {
     height: 4%;
     position: absolute;
     width: 22%;
-    left: 33%;
+    left: 18%;
     top: 0px;
     z-index: 5;
     background-color: #2a4b8d;
 }
-#controls {
-    margin-top: 0.7%;
-    height: 4%;
-    position: absolute;
-    left: 17%;
-    width: 15%;
-    top: 0px;
-    background-color: #2a4b8d;
-    z-index: 5;
-}
+
 #autocomplete {
-    width: 100%;
-}
-#country {
     width: 100%;
 }
 .placeIcon {
