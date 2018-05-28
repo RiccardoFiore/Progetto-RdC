@@ -75,7 +75,16 @@ module.exports = function(app, passport, path , express) {
         });
     });
 
-    // LOGOUT ==============================
+
+    // RABBIT MQ ===================================
+    app.post("/cinema",function (req, res) {
+        msg_q.send_comment(req,res,amqp);
+        res.render("maps-cinema.ejs",{
+            user : req.user //get the user out of session and pass to template
+        });
+    });
+
+    // LOGOUT ======================================
     app.get('/logout', function(req, res) {
         req.logout();
         res.redirect('/');
