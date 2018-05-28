@@ -20,10 +20,6 @@
             <input id="autocomplete" placeholder="Inserisci una città" type="text" />
         </div>
 
-
-
-
-
         <div id="listing">
             <table>
                 <tr>
@@ -52,6 +48,13 @@
         <h1>WS_Cinema Chat</h1>
         <input type="button" id ="join" value="Join Chat" onclick="connectToChat();">
     </div>
+    <div id="amqp" align="center">
+        <h1>AMQP_Cinema Chat</h1>
+    </div>
+    <form action="/cinema" method="POST" id = "form">
+        <input type="text" name="comment" placeholder="Write your comment here" id="comment_textArea"><br>
+        <button onclick="complete_textarea()">Send</button>
+    </form>
     <div id="chat">
         <div id="messageForm">
             <h3>Inserisci il tuo messaggio:</h3>
@@ -92,7 +95,8 @@
 </div>
 <script>
     var user = "<% if(user.local){ %><%= user.local.username%> <%} if(user.facebook){%> <%= user.facebook.last_name %><%}
-    if(user.google){%> <%= user.google.name %> <%}%>";</script>
+    if(user.google){%> <%= user.google.name %> <%}%>";
+</script>
 <script src = "websocket_chat.js"></script>
 <script src = "maps.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqz0pR-kzZcVK17lZgr1c-0y2IvecGCc4&libraries=places&callback=initMap" async defer></script>

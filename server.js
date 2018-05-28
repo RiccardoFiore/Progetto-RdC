@@ -11,7 +11,8 @@ var PORT = 8087;
 var wss = new WebSocketServer({port: PORT});
 var messages = [];
 
-
+//node module amqp (we use topics based queue)
+var amqp = require('amqplib/callback_api');
 
 var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -40,7 +41,7 @@ app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
 // routes ======================================================================
-require('./app/routes.js')(app, passport, path, express); // load our routes and pass in our app and fully configured passport
+require('./app/routes.js')(app, passport, path, express, amqp); // load our routes and pass in our app and fully configured passport
 
 
 
