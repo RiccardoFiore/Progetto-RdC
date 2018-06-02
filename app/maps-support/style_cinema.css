@@ -46,6 +46,7 @@ table {
     background-color: #2a4b8d;
     z-index: 5;
     position: absolute;
+    font-family: Verdana;
 }
 
 #listing {
@@ -62,11 +63,17 @@ table {
 #FindPath {
     margin-top: 0.7%;
     position: inherit;
+    color: red;
+    font-style: unset;
     text-align: center;
     left: 70%;
     width: 16%;
+    height: 50%;
     font-size: 16px;
     z-index: 5;
+    background-color: lawngreen;
+    border-color: lawngreen;
+    border-radius: 10px;
 }
 
 #findcinema {
@@ -105,8 +112,8 @@ table {
     height: 24px;
 }
 #results {
-    border-collapse: collapse;
     width: 240px;
+    margin-left: 250px;
 }
 #rating {
     font-size: 13px;

@@ -1,0 +1,61 @@
+<!-- views/cinema.ejs -->
+<!doctype html>
+<html>
+<head>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+</head>
+<body>
+    <div style="margin-left: 30%; margin-top: 2%">
+        <a href="/profile" class="btn btn-default btn-sm" style="margin-left: -25%;">Back to Profile</a>
+        <h1  style="color: red; margin-left: 15%">BOX OFFICE</h1>
+        <br>
+        <br>
+        <table style="padding: 1px">
+            <tr>
+                <td style="color: #1dc668">Titolo</td>
+                <td style="color: #1dc668">Data di Uscita</td>
+            </tr>
+            <tr>
+                <div>
+                    <td> <%= title[0] %></td><td><%= year[0] %></td>
+                </div>
+            </tr>
+            <tr>
+                <div>
+                    <td> <%= title[1] %></td><td><%= year[1] %></td>
+                </div>
+            </tr><tr>
+                <div>
+                    <td> <%= title[2] %></td><td><%= year[2] %></td>
+                </div>
+            </tr><tr>
+                <div>
+                    <td><%= title[3] %></td><td><%= year[3] %></td>
+                </div>
+            </tr><tr>
+                <div>
+                    <td> <%= title[4] %></td><td><%= year[4] %></td>
+                </div>
+            </tr>
+        </table>
+        <br><br>
+        <strong>Seleziona un film per vederne la valutazione o scriverne una recensione</strong><br>
+
+        <form action="/movies/ratings" method="POST" id = "form">
+            <select id = "mySelect">
+                <option><%= title[0] %></option>
+                <option><%= title[1] %></option>
+                <option><%= title[2] %></option>
+                <option><%= title[3] %></option>
+                <option><%= title[4] %></option>
+            </select>
+            <input type="text" name = "movie" id = "movie" style="display: none">
+            <button class="btn btn-default btn-sm" onclick="document.getElementById('movie').value = document.getElementById('mySelect').selectedIndex">RATINGS</button>
+        </form>
+        <br>
+        <br><br><br>
+    </div>
+</body>
+</html>
+
