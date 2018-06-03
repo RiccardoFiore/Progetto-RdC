@@ -1,5 +1,6 @@
 const msg_q = require("./amqp_functions");
 var configAuth = require('../config/auth');
+var request = require('request');
 
 module.exports = function(app, passport, path , express, amqp) {
 
@@ -80,24 +81,8 @@ module.exports = function(app, passport, path , express, amqp) {
         });
     });
 
-
-    // RABBIT MQ ===================================
-    app.post("/cinema",function (req, res) {
-        msg_q.send_comment(req,res,amqp);
-        res.render("maps-cinema.ejs",{
-            user : req.user //get the user out of session and pass to template
-        });
-    });
-
-    // LOGOUT ======================================
-    app.get('/logout', function(req, res) {
-        req.logout();
-        res.redirect('/');
-    });
-
-
+    //GET BOX OFFICE
     app.get('/movies', isLoggedIn, function(req, res) {    // we will check if an user is loggedin by using route middleware (isLoggedIn function)
-        var request = require('request');
         request({
             headers: {
                 'Content-Type': configAuth.traktApi.ContentType,
@@ -116,11 +101,9 @@ module.exports = function(app, passport, path , express, amqp) {
                     title[i] = JSON.parse(mov).title;
                     var id = JSON.parse(mov).ids;
                     id = JSON.stringify(id);
-                    console.log(id);
                     id_slugs[i] = JSON.parse(id).slug;
                     year[i] = JSON.parse(mov).year;
                 }
-                console.log(id_slugs[0]);
                 res.render('cinema.ejs', {
                     user : req.user,
                     title : title,
@@ -132,18 +115,16 @@ module.exports = function(app, passport, path , express, amqp) {
 
     });
 
-
+    //GET MOVIE'S RATINGS
     app.post('/movies/ratings', isLoggedIn, function(req, res) {
-        var request = require('request');
         var rat = [];
         var movie = req.body.movie;
-        console.log(movie);
         request({
             url: 'https://api.trakt.tv/movies/' + id_slugs[movie] + '/ratings',
             headers: {
-                'Content-Type': 'application/json',
-                'trakt-api-version': '2',
-                'trakt-api-key': '05d8b28cffe1cdaff3a23f04a5e26970d566208439729874c1c5eccdb6bf9de7'
+                'Content-Type': configAuth.traktApi.ContentType,
+                'trakt-api-version': configAuth.traktApi.ApiVersion,
+                'trakt-api-key': configAuth.traktApi.clientID
             }
         }, function (error, response, body) {
             if (error) {
@@ -155,7 +136,6 @@ module.exports = function(app, passport, path , express, amqp) {
                 var j;
                 for (j = 0; j < 10; j++) {
                     rat[j] = JSON.parse(distribution)[j + 1];
-                    console.log(rat[j]);
                 }
                 res.render('ratings.ejs', {
                     user : req.user,
@@ -166,6 +146,24 @@ module.exports = function(app, passport, path , express, amqp) {
         });
     });
 
+
+    // RABBIT MQ ===================================
+    app.post("/movies", isLoggedIn, function (req, res) {
+        var movie = req.body.movie_id;
+        msg_q.send_comment(req,res,amqp, title[movie]);
+        res.render("cinema.ejs",{
+            user : req.user,
+            title : title,
+            year  : year,
+            ids: id_slugs
+        });
+    });
+
+    // LOGOUT ======================================
+    app.get('/logout', function(req, res) {
+        req.logout();
+        res.redirect('/');
+    });
 };
 
 // route middleware to make sure a user is loggedin

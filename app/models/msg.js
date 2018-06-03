@@ -6,9 +6,9 @@ var mongoose = require('mongoose');
 var msgSchema = mongoose.Schema({
 
     message          : {
-        username     : String,
-        src          : String,
-        dest         : String
+        id           : String,
+        movies       : String,
+        review       : String
     }
 
 });

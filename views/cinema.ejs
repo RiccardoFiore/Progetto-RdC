@@ -42,7 +42,7 @@
         <br><br>
         <strong>Seleziona un film per vederne la valutazione o scriverne una recensione</strong><br>
 
-        <form action="/movies/ratings" method="POST" id = "form">
+        <form action="/movies/ratings" method="POST" id = "form" name="form">
             <select id = "mySelect">
                 <option><%= title[0] %></option>
                 <option><%= title[1] %></option>
@@ -54,6 +54,11 @@
             <button class="btn btn-default btn-sm" onclick="document.getElementById('movie').value = document.getElementById('mySelect').selectedIndex">RATINGS</button>
         </form>
         <br>
+        <form action="/movies" method="POST" id = "form" style="float: left">
+            <input type="text" name = "movie_id" id = "movie_id" style="display: none">
+            <textarea name = "review" id = "review" placeholder="Inserisci qui la tua recensione del film" style="width: 400px;height: 150px"></textarea><br><br>
+            <button class="btn btn-default btn-sm" onclick="document.getElementById('movie_id').value = document.getElementById('mySelect').selectedIndex;">Save review</button>
+        </form>
         <br><br><br>
     </div>
 </body>

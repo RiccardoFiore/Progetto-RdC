@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html >
 <head>
     <title>Place Autocomplete Parking Search</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="style_cinema.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 
     </link>
 </head>
@@ -18,13 +20,14 @@
 
         <div id="locationField">
             <input id="autocomplete" placeholder="Inserisci una città" type="text" />
-        <select id="results"></select>
-
         </div>
 
-        <button id = "FindPath">
+        <select id="results"></select>
+
+        <button id = "FindPath" class="btn btn-default btn-sm">
             Cerca percorso
         </button>
+        <a href="/profile" id="BackProfile" class="btn btn-default btn-sm"> Back to Profile</a>
 
     </div>
 
@@ -36,26 +39,20 @@
 <div id="right-panel"></div>
 <div id = "container-right">
     <div id="welcome" align="center">
-        <h1>WS_Cinema Chat</h1>
+        <h1 style="color: red">WS_Cinema Chat</h1>
+        <br>
+        <br>
         <input type="button" id ="join" value="Join Chat" onclick="connectToChat();">
     </div>
-    <div id="amqp" align="center">
-        <h1>AMQP_Cinema Chat</h1>
-    </div>
-    <form action="/cinema" method="POST" id = "form">
-        <input type="text" name="comment" placeholder="Write your comment here" id="comment_textArea"><br>
-        <button onclick="complete_textarea()">Send</button>
-    </form>
     <div id="chat">
         <div id="messageForm">
             <h3>Inserisci il tuo messaggio:</h3>
             <input type="text" id="message">
             <input type="button" value="Invia" onclick="sendMessage();">
+            <h4>oppure</h4>
+            <button onclick="sendPath()">Condividi la tua meta</button>
+            <div id="chatBox"></div>
         </div>
-        <h4>oppure</h4>
-        <button onclick="sendPath()">Condividi la tua meta</button>
-
-        <div id="chatBox"></div>
     </div>
 </div>
 <div style="display: none">
@@ -85,8 +82,7 @@
     </div>
 </div>
 <script>
-    var user = "<% if(user.local){ %><%= user.local.username%> <%} if(user.facebook){%> <%= user.facebook.last_name %><%}
-    if(user.google){%> <%= user.google.name %> <%}%>";
+    var user = "<% if(user.local){ %><%= user.local.username%> <%} if(user.facebook){%> <%= user.facebook.last_name %><%}if(user.google){%> <%= user.google.name %> <%}%>";
 </script>
 <script src = "websocket_chat.js"></script>
 <script src = "maps.js"></script>
