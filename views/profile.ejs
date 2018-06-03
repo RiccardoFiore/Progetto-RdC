@@ -18,7 +18,6 @@
 
     <div class="page-header text-center">
         <h1>Profile Page</h1>
-        <a href="/" class="btn btn-default btn-sm">Home</a>
         <a href="/logout" class="btn btn-default btn-sm">Logout</a>
         <a href="/cinema" class="btn btn-default btn-sm">Cinema</a>
         <a href="/movies" class="btn btn-default btn-sm">Movies</a>
@@ -48,9 +47,9 @@
                 <h3 align="center" class="text-primary"><span class="fa fa-facebook"></span> Facebook</h3>
 
                 <p>
-                    <strong>nome</strong>: <%= user.facebook.first_name %><br>
-                    <strong>conome</strong>: <%= user.facebook.last_name %><br>
-                    <strong>email</strong>: <%= user.facebook.email %><br>
+                    <strong>Nome</strong>: <%= user.facebook.first_name %><br>
+                    <strong>Conome</strong>: <%= user.facebook.last_name %><br>
+                    <strong>Email</strong>: <%= user.facebook.email %><br>
                 </p>
 
             </div>
@@ -63,7 +62,7 @@
 
                 <p>
                     <strong>Name</strong>: <%= user.google.name %><br>
-                    <strong>Surname</strong>: <%= user.google.surname %><br>
+                    <strong>Cognome</strong>: <%= user.google.surname %><br>
                     <strong>Email</strong>: <%= user.google.email %>
                 </p>
 
