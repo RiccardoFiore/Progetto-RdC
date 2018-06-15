@@ -73,6 +73,24 @@ module.exports = function(app, passport, path , express, amqp) {
         }));
 
 
+
+    // =====================================
+    // TWITTER ROUTES ======================
+    // =====================================
+    // route for twitter authentication and login
+    app.get('/auth/twitter', passport.authenticate('twitter'));
+
+    // handle the callback after twitter has authenticated the user
+    app.get('/auth/twitter/callback',
+        passport.authenticate('twitter', {
+            successRedirect : '/profile',
+            failureRedirect : '/'
+        }));
+
+
+
+
+
     // MAPS API ====================================
     app.get("/cinema", isLoggedIn, function(req,res){
         app.use(express.static(path.join(__dirname,'maps-support')));

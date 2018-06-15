@@ -18,6 +18,13 @@ module.exports = {
         'profileURL'    : 'https://graph.facebook.com/v2.5/me?fields=first_name,last_name,email',
         'profileFields' : ['id', 'email', 'name','photos'] // For requesting permissions from Facebook API
     },
+
+    'twitterAuth' : {
+        'consumerKey'       : 'r9RnKDR38WNSsUrTtngUhapVG',
+        'consumerSecret'    : 'FJ9cv4bZRuUYF3VXLNwBfTWboq2V8Z82Tnp6kXVewvBxkZoAbD',
+        'callbackURL'       : 'http://localhost:8080/auth/twitter/callback'
+    },
+
     'googleAuth' : {
         'clientID'      : '781185685407-gi53od0at4hrq5p9lum4r7dq5mpdd5k0.apps.googleusercontent.com',
         'clientSecret'  : 'p_BHqZgpT3AdfV6ZUZ6Cc9C5',

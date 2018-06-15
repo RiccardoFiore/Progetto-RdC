@@ -32,8 +32,8 @@
                 <h3 align="center"><span class="fa fa-user"></span> Local</h3>
 
                 <p>
-                    <strong>username</strong>: <%= user.local.username %><br>
-                    <strong>password</strong>: <%= user.local.passwordIns %>
+                    <strong>Username</strong>: <%= user.local.username %><br>
+                    <strong>Password</strong>: <%= user.local.passwordIns %>
                 </p>
 
             </div>
@@ -61,7 +61,7 @@
                 <h3 align="center" class="text-danger"><span class="fa fa-google-plus"></span> Google</h3>
 
                 <p>
-                    <strong>Name</strong>: <%= user.google.name %><br>
+                    <strong>Nome</strong>: <%= user.google.name %><br>
                     <strong>Cognome</strong>: <%= user.google.surname %><br>
                     <strong>Email</strong>: <%= user.google.email %>
                 </p>
@@ -69,6 +69,19 @@
             </div>
         </div>
 
+        <%}else if(user.twitter.id !== undefined){%>
+        <div class="col-sm-6">
+            <div class="well">
+                <h3 class="text-info"><span class="fa fa-twitter"></span> Twitter</h3>
+
+                <p>
+                    <strong>Id</strong>: <%= user.twitter.id %><br>
+                    <strong>Username</strong>: <%= user.twitter.username %><br>
+                    <strong>Nome</strong>: <%= user.twitter.displayName %>
+                </p>
+
+            </div>
+        </div>
         <%}%>
     </div>
 

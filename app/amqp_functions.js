@@ -9,18 +9,19 @@ var send_comment = function(req,res,amqp, movie){
 
             ch.assertQueue(q, {durable: false});
             ch.sendToQueue(q, new Buffer(msg));
-            console.log(" [x] Sent %s", req.body.review+" "+movie+" "+id);
+            console.log(" [x] Sent:  %s", req.body.review+" about "+movie+" from "+id);
         });
     });
 };
 
 function scegliUser(user) {
-    var id;
-    if (user.facebook.id !== undefined) id = user.facebook.id;
-    else if (user.google.id !== undefined) id = user.google.id;
-    else if (user.twitter.id !== undefined) id = user.twitter.id;
-    else id = user.local.username;
-    return id;
+
+    var u;
+    if (user.facebook.id !== undefined) u = user.facebook.last_name;
+    else if (user.google.id !== undefined) u = user.google.name;
+    else if (user.twitter.id) u = user.twitter.username;
+    else u = user.local.username;
+    return u;
 }
 
 module.exports.send_comment=send_comment;
