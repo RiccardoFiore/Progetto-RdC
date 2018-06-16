@@ -1,0 +1,45 @@
+Documentazione REST
+
+	/:
+		GET: mostra i diversi tipi di autenticazione.
+
+	/login:
+		GET: mostra il form di login con Passport (in locale).
+		POST: tenta di autenticare l’utente che ha fornito username e password e reindirizza a una pagina di profilo se ha successo o ritorna alla pagina di login se fallisce.
+
+	/signup:
+		GET: mostra il form di signup con Passport (in locale).
+		POST: tenta di registrare l’utente che ha fornito username e password e reindirizza a una pagina di profilo se ha successo o ritorna alla pagina di signup se fallisce.
+
+	/profile:
+		GET: mostra il profilo dell’utente con le credenziali relative al metodo di autenticazione utilizzato.
+
+	/auth/facebook:
+		GET: mostra la pagina di autenticazione di Facebook tramite oauth.
+
+	/auth/facebook/callback:
+		GET: get eseguita dalla callback chiamata da Facebook Oauth. Reindirizza al profilo se il login ha avuto successo, nella homepage altrimenti.
+
+
+	/auth/google:
+		GET: mostra la pagina di autenticazione di Google tramite oauth.
+
+	/auth/google/callback:
+		GET: get eseguita dalla callback chiamata da Google Oauth. Reindirizza al profilo se il login ha avuto successo, nella homepage altrimenti.
+
+	/auth/twitter:
+		GET: mostra la pagina di autenticazione di Twitter tramite oauth.
+
+	/auth/twitter/callback:
+		GET: get eseguita dalla callback chiamata da Twitter Oauth. Reindirizza al profilo se il login ha avuto successo, nella homepage altrimenti.
+
+
+	/cinema:
+		GET: mostra una pagina con possibilità di selezionare una città e cercare i cinema presenti in quella città e il percorso auto per raggiungerli rispetto alla tua posizione. E’ inoltre presente una chat implementato con i Web Sockets con cui è anche possibile condividere la propria meta.
+
+	/movies
+		GET: mostra alcuni film presenti al momento al Box Office ottenuti grazie all’ API “trakt”.
+		POST: dà la possibilità di scrivere una recensione circa uno specifico film attualmente al Box Office e di salvarla in una coda di messaggi tramite il broker RabbitMQ e di salvarla anche sul database Mongo con il relativo id dell’utente che l’ha scritta.
+
+	/movies/ratings
+		POST: mostra i voti (da 1 a 10) attribuiti ad uno specifico film presente attualmente al Box Office.
