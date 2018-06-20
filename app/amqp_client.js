@@ -5,8 +5,14 @@ var mongoose = require('mongoose');
 var Msg = require('./models/msg');
 var configDB = require('../config/database.js');
 
+const mongoOptions ={
+    useMongoClient: true
+}
+
+mongoose.Promise=require('bluebird');
+
 // configuration ===============================================================
-mongoose.connect(configDB.url); // connect to our database
+mongoose.connect(configDB.url,mongoOptions); // connect to our database
 
 amqp.connect('amqp://localhost', function(err, conn) {
     conn.createChannel(function(err, ch) {

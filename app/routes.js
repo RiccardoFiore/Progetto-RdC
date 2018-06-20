@@ -114,7 +114,7 @@ module.exports = function(app, passport, path , express, amqp) {
             } else {
                 var body1 = JSON.parse(body);
                 var i;
-                for (i = 0; i < 5; i++){
+                for (i = 0; i < 10; i++){
                     var mov = JSON.stringify(body1[i].movie);
                     title[i] = JSON.parse(mov).title;
                     var id = JSON.parse(mov).ids;
@@ -150,7 +150,6 @@ module.exports = function(app, passport, path , express, amqp) {
             } else {
                 var body1 = JSON.parse(body);
                 var distribution = JSON.stringify(body1.distribution);
-                console.log(distribution);
                 var j;
                 for (j = 0; j < 10; j++) {
                     rat[j] = JSON.parse(distribution)[j + 1];

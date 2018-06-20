@@ -1,6 +1,6 @@
 // config/passport.js
 
-// load all the things we need
+// load all the Strategy we need
 var LocalStrategy   = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
@@ -8,13 +8,12 @@ var TwitterStrategy  = require('passport-twitter').Strategy;
 
 
 // load up the user model
-var User            = require('../app/models/user');
+var User = require('../app/models/user');
 
 // load the auth variables
 var configAuth = require('./auth');
 
 
-// expose this function to our app using module.exports
 module.exports = {
 
 
@@ -23,8 +22,7 @@ module.exports = {
         // =========================================================================
         // passport session setup ==================================================
         // =========================================================================
-        // required for persistent login sessions
-        // passport needs ability to serialize and unserialize users out of session
+
 
         // used to serialize the user for the session
         passport.serializeUser(function (user, done) {
@@ -45,11 +43,11 @@ module.exports = {
                 clientSecret: configAuth.facebookAuth.clientSecret,
                 callbackURL: configAuth.facebookAuth.callbackURL,
                 profileFields: ['id', 'email', 'name']
-
             },
 
             // facebook will send back the token and profile
             function (token, refreshToken, profile, done) {
+
 
                 // asynchronous
                 process.nextTick(function () {
@@ -128,7 +126,6 @@ module.exports = {
 
                             // set the user's local credentials
                             newUser.local.username = username;
-                            newUser.local.passwordIns = password;
                             newUser.local.password = newUser.generateHash(password);
 
                             // save the user
@@ -189,7 +186,6 @@ module.exports = {
                 clientID        : configAuth.googleAuth.clientID,
                 clientSecret    : configAuth.googleAuth.clientSecret,
                 callbackURL     : configAuth.googleAuth.callbackURL
-
             },
             function(token, refreshToken, profile, done) {
 
