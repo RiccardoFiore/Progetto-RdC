@@ -7,8 +7,8 @@ var send_comment = function(req,res,amqp, movie){
             var id = scegliUser(req.user);
             var msg = req.body.review+"{"+movie+"{"+id;
 
-            ch.assertQueue(q, {durable: false});
-            ch.sendToQueue(q, new Buffer(msg));
+            ch.assertExchange(q, 'fanout', {durable: false});
+            ch.publish(q,'', new Buffer(msg));
             console.log(" [x] Sent:  %s", req.body.review+" about "+movie+" from "+id);
         });
     });
